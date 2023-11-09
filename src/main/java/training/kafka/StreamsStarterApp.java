@@ -39,7 +39,9 @@ public class StreamsStarterApp {
 		
 		KafkaStreams streams = new KafkaStreams(builder.build(), config);
 		streams.start();
-
+		//print the topology		
+		System.out.println(streams.toString());
+		Runtime.getRuntime().addShutdownHook(new Thread(streams::close));
 	}
 
 }
